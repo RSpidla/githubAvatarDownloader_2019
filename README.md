@@ -10,6 +10,9 @@ This program should be executed from the command line, in the following manner:
 
 `node download_avatars.js jquery jquery`
 
+## Dev Dependencies
+* [request](https://www.npmjs.com/package/request)
+
 ## Versioning
 
 I used [Git](https://git-scm.com/) for versioning. For the versions available, see the [repository](https://github.com/RSpidla/tinyApp_version_2). 

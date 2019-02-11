@@ -1,0 +1,22 @@
+{
+  "name": "githubavatardownloader_2019",
+  "version": "1.0.0",
+  "description": "A command line node app that uses HTTP to retrieve content from Github using the API and writes content to disk",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RSpidla/githubAvatarDownloader_2019.git"
+  },
+  "author": "Raymond Spidla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RSpidla/githubAvatarDownloader_2019/issues"
+  },
+  "homepage": "https://github.com/RSpidla/githubAvatarDownloader_2019#readme",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
