@@ -21,8 +21,6 @@ I used [Git](https://git-scm.com/) for versioning. For the versions available, s
 
 * **Raymond Spidla** - [Github Account](https://github.com/RSpidla)
 
-<!-- See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project. -->
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
