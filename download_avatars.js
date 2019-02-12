@@ -22,6 +22,19 @@ function getRepoContributors(repoOwner, repoName, cb) {
   });
 }
 
+const logContributers = (err, result) => {
+  if (err) {
+    console.log(err);
+  } else {
+    result.map(contributer => {
+      downloadImageByURL(
+        `${contributer.avatar_url}`,
+        `avatars/${contributer.login}.png`
+      );
+    });
+  }
+};
+
 const downloadImageByURL = (url, filepath) => {
   request
     .get(url)
