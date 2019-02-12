@@ -9,7 +9,7 @@ console.log("Welcome to the Github Avatar Downloader!!!");
 // Check username and repo name
   // if error print user error message to standard output
   // else deliver user credentials for data request
-  // then request body and parse to JSON
+    // then request body and parse to JSON
 function getRepoContributors(repoOwner, repoName, cb) {
   if (repoOwner === undefined) {
       console.log('Please enter Owner Name');
