@@ -3,7 +3,7 @@ const fs = require('fs');
 const KEYS = require('./secrets');
 const [name, owner] = process.argv.slice(2);
 
-// Display user welsome message
+// Display user welcome message
 console.log("Welcome to the Github Avatar Downloader!!!");
 
 // Check username and repo name
