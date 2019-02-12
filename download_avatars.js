@@ -20,8 +20,21 @@ function getRepoContributors(repoOwner, repoName, cb) {
     let result = JSON.parse(body);
     cb(err, result);
   });
+}
 
-  
+const downloadImageByURL = (url, filepath) => {
+  request
+    .get(url)
+    .on('error', err => {
+      throw err;
+    })
+    .on('end', () => {
+      console.log('Downloading Github Avatar Image!!');
+    })
+    .pipe(fs.createWriteStream(filepath))
+    .on('finish', () => {
+      console.log('SUCCESS, Github Avatar Download Complete!!')
+    });
 }
 
 getRepoContributors("jquery", "jquery", function(err, result) {
