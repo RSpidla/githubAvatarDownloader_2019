@@ -1,27 +1,43 @@
 const request = require('request');
+const fs = require('fs');
 const KEYS = require('./secrets');
+const [name, owner] = process.argv.slice(2);
 
+// Display user welsome message
 console.log("Welcome to the Github Avatar Downloader!!!");
 
+// Check username and repo name
+  // if error print user error message to standard output
+  // else deliver user credentials for data request
+  // then request body and parse to JSON
 function getRepoContributors(repoOwner, repoName, cb) {
-  let options = {
-    url:
-    'https://api.github.com/repos/' +
-    repoOwner +
-    '/' +
-    repoName +
-    '/contributors',
-    headers: {
-    'User-Agent': 'request',
-    Authorization: `token ${KEYS.GITHUB_TOKEN}`
-    }
-  };
-  request(options, function(err, res, body) {
-    let result = JSON.parse(body);
-    cb(err, result);
-  });
+  if (repoOwner === undefined) {
+      console.log('Please enter Owner Name');
+  } else if (repoName === undefined) {
+      console.log('Please enter Repo Name');
+  } else {
+      let options = {
+          url:
+          'https://api.github.com/repos/' +
+          repoOwner +
+          '/' +
+          repoName +
+          '/contributors',
+          headers: {
+          'User-Agent': 'request',
+          Authorization: `token ${KEYS.GITHUB_TOKEN}`
+          }
+      };
+      request(options, function(err, res, body) {
+          let result = JSON.parse(body);
+          cb(err, result);
+      });
+  }
 }
 
+// Check for errors
+  // if error print to standard output
+  // else call download avatar function on every element in array
 const logContributers = (err, result) => {
   if (err) {
     console.log(err);
@@ -35,6 +51,8 @@ const logContributers = (err, result) => {
   }
 };
 
+// Download avatar images
+  // Display user success message when download complete
 const downloadImageByURL = (url, filepath) => {
   request
     .get(url)
@@ -42,7 +60,7 @@ const downloadImageByURL = (url, filepath) => {
       throw err;
     })
     .on('end', () => {
-      console.log('Downloading Github Avatar Image!!');
+      console.log('WORKING ON IT, Downloading Github Avatar Image!!');
     })
     .pipe(fs.createWriteStream(filepath))
     .on('finish', () => {
@@ -50,7 +68,5 @@ const downloadImageByURL = (url, filepath) => {
     });
 }
 
-getRepoContributors("jquery", "jquery", function(err, result) {
-  console.log("Errors:", err);
-  console.log("Result:", result);
-});
+// Invoke function with command line arguments and callback
+getRepoContributors(name, owner, logContributers);
