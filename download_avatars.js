@@ -18,14 +18,14 @@ function getRepoContributors(repoOwner, repoName, cb) {
   } else {
       let options = {
           url:
-          'https://api.github.com/repos/' +
-          repoOwner +
-          '/' +
-          repoName +
-          '/contributors',
+            'https://api.github.com/repos/' +
+            repoOwner +
+            '/' +
+            repoName +
+            '/contributors',
           headers: {
-          'User-Agent': 'request',
-          Authorization: `token ${KEYS.GITHUB_TOKEN}`
+            'User-Agent': 'request',
+            Authorization: `token ${KEYS.GITHUB_TOKEN}`
           }
       };
       request(options, function(err, res, body) {
